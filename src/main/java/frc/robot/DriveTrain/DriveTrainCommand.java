@@ -33,7 +33,7 @@ public class DriveTrainCommand extends CommandBase
         forwardSpeedRight = driver.getRawAxis(OI.rightStickY);
 
         checkBumpers();
-        driveDriverCode();
+        motorDriveCode();
     }
 
     /// Checks for bumpers, which manually disable safeties ///
@@ -55,7 +55,7 @@ public class DriveTrainCommand extends CommandBase
 
 
     /// Main driver code for motors ///
-    public void driveDriverCode() 
+    public void motorDriveCode() 
     {
         /// CHECKS IF STICK IS BEYOND DEADZONE. SETS MOTOR IF SO, PRINTS ERROR IF NOT ///
         if (Math.abs(forwardSpeedLeft) > RobotMap.deadzone) 
