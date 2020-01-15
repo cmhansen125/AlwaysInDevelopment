@@ -22,32 +22,32 @@ public class DriveTrainSubsystem extends Subsystem
     /// This function sets motor speeds ///
         /// It contains nested conditionals; one that checks for the safety toggle, and one that checks which side is being set ///
         /// There is a debug at the end /// 
-    public void setMotors(double speed, String side) 
+    public void setMotors(final double speed, final String side, boolean speedMod) 
     {
        if (RobotMap.driveTrainSafety)
        {
            if (side == "left")
            {
-               leftMotorSlave.set(ControlMode.PercentOutput, configSpeed(speed));
-               leftMotorMaster.set(ControlMode.PercentOutput, configSpeed(speed));
+               leftMotorSlave.set(ControlMode.PercentOutput, configSpeed(speed, speedMod, true));
+               leftMotorMaster.set(ControlMode.PercentOutput, configSpeed(speed, speedMod, true));
            }
            if (side == "right")
            {
-               rightMotorSlave.set(ControlMode.PercentOutput, configSpeed(speed));
-               rightMotorMaster.set(ControlMode.PercentOutput, configSpeed(speed));
+               rightMotorSlave.set(ControlMode.PercentOutput, configSpeed(speed, speedMod, true));
+               rightMotorMaster.set(ControlMode.PercentOutput, configSpeed(speed, speedMod, true));
            }
        }
        else
        {
            if (side == "left")
            {
-            leftMotorSlave.set(ControlMode.PercentOutput, speed);
-            leftMotorMaster.set(ControlMode.PercentOutput, speed);
+            leftMotorSlave.set(ControlMode.PercentOutput, configSpeed(speed, speedMod, false));
+            leftMotorMaster.set(ControlMode.PercentOutput, configSpeed(speed, speedMod, false));
            }
            if (side == "right")
            {
-            rightMotorSlave.set(ControlMode.PercentOutput, speed);
-            rightMotorMaster.set(ControlMode.PercentOutput, speed);
+            rightMotorSlave.set(ControlMode.PercentOutput, configSpeed(speed, speedMod, false));
+            rightMotorMaster.set(ControlMode.PercentOutput, configSpeed(speed, speedMod, false));
            }
        }
 
@@ -58,16 +58,54 @@ public class DriveTrainSubsystem extends Subsystem
        }
     }
 
-    /// This function returns the cube of an inputted double ///
-    public static double configSpeed(double speed)
+    /// This function returns a double based on the values of two safety variables ///
+    public static double configSpeed(final double speed, final boolean speedMod, final boolean safetyCube)
     {
-       return (Math.pow(speed, 3));
+        final double returnVar;
+
+        /// If cubic safety AND speed modifiers enabled... ///
+        if ((safetyCube) && (speedMod))
+        {
+            /// Return speed**3 * speed modifier ///
+            returnVar = ((Math.pow(speed, 3)) * RobotMap.driveSafetySpeedMod);
+        }
+        /// If cubic safety enabled but NOT speed modifiers... ///
+        else if ((safetyCube) && (!speedMod))
+        {
+            /// Return speed**3 ///
+            returnVar = Math.pow(speed, 3);
+        }
+        /// If speed modifiers enabled but NOT cubic safety... ///
+        else if ((!safetyCube) && (speedMod))
+        {
+            /// Return speed * speed modifier ///
+            returnVar = speed * (RobotMap.driveSafetySpeedMod);
+        }
+        /// If neither cubic safety or speed modifiers enabled... ///
+        else if ((!safetyCube) && (!speedMod))
+        {
+            /// Return raw speed ///
+            returnVar = speed;
+        }
+        /// IF NONE OF THE ABOVE ARE TRUE (somehow...) ///
+        else
+        {
+            /// DEBUG CODE ///
+            if (RobotMap.driveDebug)
+            {
+                System.out.println("Error in configSpeed");
+            }
+            /// Return 0 ///
+            return 0;
+        }
+
+        /// Final return statement ///
+        return returnVar;
     }
 
     @Override
-    protected void initDefaultCommand() {
-        /// This sets the default command file for this subsystem to be DriveTrainCommand ///
-        
-            setDefaultCommand(new DriveTrainCommand());
+    protected void initDefaultCommand() 
+    {
+
     }
 }
