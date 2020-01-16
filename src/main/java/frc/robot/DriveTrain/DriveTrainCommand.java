@@ -8,7 +8,8 @@ import frc.robot.CommandBase;
 
 public class DriveTrainCommand extends CommandBase
 {
-    public DriveTrainCommand() {
+    public DriveTrainCommand() 
+    {
         /// MAKES THIS FILE REQUIRE driveSubsystem ///
         requires(driveSubsystem);
         /// DEBUG CODE ///
@@ -94,12 +95,15 @@ public class DriveTrainCommand extends CommandBase
 
 
     @Override
-    protected boolean isFinished() {
+    protected boolean isFinished() 
+    {
         return false;
     }
 
     @Override
-    protected void end() {
+    protected void end() 
+    {
+        
     }
     
 }
