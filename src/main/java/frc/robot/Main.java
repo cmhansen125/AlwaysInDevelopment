@@ -26,8 +26,6 @@ public final class Main
    */
   public static void main(String... args) 
   {
-    /// This print isn't supposed to be here ///
-    System.out.println("hello world!!!!");
     RobotBase.startRobot(Robot::new);
   }
 }

@@ -8,7 +8,7 @@ import frc.robot.RobotMap;
 
 public class DriveTrainSubsystem extends Subsystem
 {
-    
+
     /// TEST COMMIT TEXT ///
 
     /// Motor Definitions ///
@@ -28,8 +28,8 @@ public class DriveTrainSubsystem extends Subsystem
        {
            if (side == "left")
            {
-               leftMotorSlave.set(ControlMode.PercentOutput, configSpeed(speed, speedMod, true));
-               leftMotorMaster.set(ControlMode.PercentOutput, configSpeed(speed, speedMod, true));
+               leftMotorSlave.set(ControlMode.PercentOutput, configSpeed(-speed, speedMod, true));
+               leftMotorMaster.set(ControlMode.PercentOutput, configSpeed(-speed, speedMod, true));
            }
            if (side == "right")
            {
@@ -41,8 +41,8 @@ public class DriveTrainSubsystem extends Subsystem
        {
            if (side == "left")
            {
-            leftMotorSlave.set(ControlMode.PercentOutput, configSpeed(speed, speedMod, false));
-            leftMotorMaster.set(ControlMode.PercentOutput, configSpeed(speed, speedMod, false));
+            leftMotorSlave.set(ControlMode.PercentOutput, configSpeed(-speed, speedMod, false));
+            leftMotorMaster.set(ControlMode.PercentOutput, configSpeed(-speed, speedMod, false));
            }
            if (side == "right")
            {
@@ -100,12 +100,18 @@ public class DriveTrainSubsystem extends Subsystem
         }
 
         /// Final return statement ///
+        if (RobotMap.driveDebug)
+        {
+            System.out.println("Cubic Enabled : " + safetyCube + "\n Cap Enabled : " + speedMod + "\n Speed Input : " + speed + "\n Speed Output " + returnVar);
+        }
         return returnVar;
     }
 
     @Override
     protected void initDefaultCommand() 
     {
-
+        setDefaultCommand(new DriveTrainCommand());
     }
+
+
 }

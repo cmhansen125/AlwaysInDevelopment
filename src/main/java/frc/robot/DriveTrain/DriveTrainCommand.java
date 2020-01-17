@@ -68,6 +68,7 @@ public class DriveTrainCommand extends CommandBase
             /// DEBUG CODE ///
             if (RobotMap.driveDebug)
             {
+                driveSubsystem.setMotors(0, "left", speedModToggle);
                 System.out.println("Left Stick not above Deadzone");
             }
         }
@@ -81,6 +82,7 @@ public class DriveTrainCommand extends CommandBase
             /// DEBUG CODE ///
             if (RobotMap.driveDebug)
             {
+                driveSubsystem.setMotors(0, "right", speedModToggle);
                 System.out.println("Right Stick not above Deadzone");
             }
         }
