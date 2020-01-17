@@ -13,7 +13,7 @@ public class RobotMap
 	public static final boolean driveDebug = true;
 
     /// Drive Train Deadzone Value ///
-    public static double deadzone = 0.15;
+    public static double deadzone = 0.25;
 
     /// Control Mode (Required for VICTORSPX.set() functions) ///
     public ControlMode controlMode = ControlMode.PercentOutput;

@@ -18,7 +18,7 @@ public class DriveTrainSubsystem extends Subsystem
         /// Right Side ///
     public VictorSPX rightMotorMaster = new VictorSPX(RobotMap.rightMotorMaster);
     public VictorSPX rightMotorSlave = new VictorSPX(RobotMap.rightMotorSlave);
-
+    
     /// This function sets motor speeds ///
         /// It contains nested conditionals; one that checks for the safety toggle, and one that checks which side is being set ///
         /// There is a debug at the end /// 
