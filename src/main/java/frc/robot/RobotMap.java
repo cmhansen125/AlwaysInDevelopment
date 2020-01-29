@@ -8,6 +8,10 @@ public class RobotMap
     public static boolean driveTrainSafety = true;
     public static double driveSafetySpeedMod = 0.7;
 
+    // Spinner Safety
+    public static double spinnerSafetySpeedMod = .5;
+
+
     /// Debug Toggles ///
 	public static final boolean debug = false;
 	public static final boolean driveDebug = true;
@@ -23,4 +27,5 @@ public class RobotMap
     public static int leftMotorSlave = 3;
     public static int rightMotorMaster = 1; //Right Side
     public static int rightMotorSlave = 4; //Right Side
+    public static int spinnerMotor = 5; 
 }

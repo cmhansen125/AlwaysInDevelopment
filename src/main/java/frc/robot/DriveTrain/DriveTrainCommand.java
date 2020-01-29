@@ -34,26 +34,33 @@ public class DriveTrainCommand extends CommandBase
         forwardSpeedRight = driver.getRawAxis(OI.rightStickY);
 
         checkBumpers();
+        
         motorDriveCode();
     }
 
     /// Checks for bumpers, which manually disable safeties ///
     public void checkBumpers()
     {
-        
-        /// If left trigger pressed, disable speed modifiers ///
-        if (driver.getRawButton(OI.leftTrigger))
+        /// If both bumpers are pressed, don't let either safety disable /// 
+        if ((driver.getRawButton(OI.leftTrigger)) && (driver.getRawButton(OI.leftBumper)))
+            {
+                System.out.println("insert debug thing here");
+            }
+        else
         {
-            speedModToggle = false;
-        }
+            /// If left trigger pressed, disable speed modifiers ///
+            if (driver.getRawButton(OI.leftTrigger))
+                {
+                    speedModToggle = false;
+                }
+            /// If left bumper pressed, disable cubic safety ///
+            if (driver.getRawButton(OI.leftBumper))
+                {
+                    RobotMap.driveTrainSafety = !RobotMap.driveTrainSafety;
+                }}
+       }
 
-        /// If left bumper pressed, disable cubic safety ///
-        if (driver.getRawButton(OI.leftBumper))
-        {
-             RobotMap.driveTrainSafety = !RobotMap.driveTrainSafety;
-        }
-    }
-
+      
 
     /// Main driver code for motors ///
     public void motorDriveCode() 
@@ -91,6 +98,7 @@ public class DriveTrainCommand extends CommandBase
         {
             System.out.println("DriveTrainCommand Driver Code");
         }
+        
     }
 
 

@@ -6,7 +6,7 @@ public class OI
 {
 
     public static XboxController driverController = new XboxController(0);
-    //public static XboxController specialController = new XboxController(1);
+    public static XboxController specialController = new XboxController(1);
 
 	/// Button Ports ///
     public static int yButton = 0;
