@@ -23,8 +23,6 @@ public class ColorSensorSubsystem extends Subsystem
       System.out.println("Current Color: " + colorString);
 
     }
-
-
   
 
   @Override

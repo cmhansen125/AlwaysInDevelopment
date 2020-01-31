@@ -9,13 +9,13 @@ import frc.robot.RobotMap;
 public class SpinnerMotorSubsystem extends Subsystem
 {
 
-    /// Motor Definitions ///
+    // Motor Definitions
 
     public VictorSPX spinnerMotor = new VictorSPX(RobotMap.spinnerMotor);
     
-    /// This function sets motor speeds ///
-        /// will set to static speed when bumper is pressed
-        /// There is a debug at the end /// 
+    // This function sets motor speeds, will set to static speed when bumper is pressed
+    // There is a debug at the end
+
     public void setMotors(final double speed, double spinnerSafetySpeedMod)
     {
        
@@ -28,7 +28,7 @@ public class SpinnerMotorSubsystem extends Subsystem
        }
     }
 
-    /// This function returns a double based on the values of two safety variables ///
+    // This function returns a double based on the values of two safety variables 
     public static double configSpeed(final double speed, final double speedMod)
     {
         final double returnVar;

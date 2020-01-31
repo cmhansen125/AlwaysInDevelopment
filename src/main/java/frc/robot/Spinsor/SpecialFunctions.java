@@ -15,26 +15,34 @@ public class SpecialFunctions extends CommandBase
 
         if (RobotMap.debug)
         {
-            System.out.println("Wheel Spinner Command Init");
-            System.out.println("Color Sensor Command Init");
+            System.out.println("Spinsor init");
         }
     }
 
     // Makes a controller called Spinsor that is equal to a controller defined in OI File
     private static XboxController spinsor = OI.specialController;
 
-    // Declare speed variables as null
+    // Declare speed variables as true or false
     public boolean spinnerRight;
 
-    // Set color sensor on switch to x button and off switch to b button
-    public boolean sensorOn = spinsor.getRawButton(OI.xButton);
-    public boolean sensorOff = spinsor.getRawButton(OI.bButton);
+    // Set color sensor printing on or off
+    public boolean sensorOn;
+    public boolean sensorOff;
 
 
     @Override
     protected void execute()
     {
-        spinnerRight = spinsor.getRawButton(OI.rightBumper);
+        //gathers information on whether or not the X or B button has been pressed last
+        if (spinsor.getRawButton(OI.xButton)){
+            sensorOn = true;
+            sensorOff = false;
+        }
+        if (spinsor.getRawButton(OI.bButton))
+        {
+            sensorOn = false;
+            sensorOff = true;
+        }
 
         checkSensor();
 
@@ -43,23 +51,30 @@ public class SpecialFunctions extends CommandBase
 
     public void checkSensor()
     {
-        //if B button is pressed, transmit color data from sensor to laptop
-        if (spinsor.getRawButton(OI.bButton))
+        //if X button is pressed, transmit color data from sensor to laptop
+        if (sensorOn)
         {
             System.out.println("Starting transmission of Color Data.");
             colorSensorSubsystem.printColor();
         }
+        
 
-        //if x button is pressed, stop transmitting color data from sensor
-        if (spinsor.getRawButton(OI.bButton))
+        //if B button is pressed, stop transmitting color data from sensor
+        else if (sensorOff)
         {
             System.out.println("Finished Transmitting, Press X to start again.");
         }
+        else
+        {
+            System.out.println("Sensor Not Activated");
+        }
+        
     }
 
     public void motorSpinnerCode()
     {
-        if (spinnerRight)
+        //when right bumper is held down, motor is activated
+        if (spinsor.getRawButton(OI.rightBumper));
         {
             spinnerSubsystem.setMotors(1, RobotMap.spinnerSafetySpeedMod);
         }

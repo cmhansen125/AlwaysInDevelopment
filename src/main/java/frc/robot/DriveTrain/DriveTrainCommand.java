@@ -102,8 +102,6 @@ public class DriveTrainCommand extends CommandBase
     }
 
 
-
-
     @Override
     protected boolean isFinished() 
     {
