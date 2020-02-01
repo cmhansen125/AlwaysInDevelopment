@@ -6,11 +6,15 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot;
+import java.lang.Thread;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import frc.robot.DriveTrain.*;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -88,6 +92,25 @@ public class Robot extends TimedRobot
       case kDefaultAuto:
       default:
         // Put default auto code here
+        // Move the robot forward and stop after leaving line but before hitting middle area
+        try
+        {
+          DriveTrainCommand auto = new DriveTrainCommand();
+          auto.autoMode = true;
+          auto.forwardSpeedLeft = .5;
+          auto.forwardSpeedRight = .5;
+          auto.motorDriveCode();
+          // Hold motors at .5 power for 2 seconds then stop afterwards
+          Thread.sleep(2000);
+          auto.forwardSpeedLeft = 0.0;
+          auto.forwardSpeedRight = 0.0;
+          auto.motorDriveCode();
+          auto.autoMode = false;
+          auto.close();
+        } catch (InterruptedException e)
+        {
+          e.printStackTrace();
+        }
         break;
     }
   }

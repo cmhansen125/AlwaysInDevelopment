@@ -25,10 +25,15 @@ public class DriveTrainCommand extends CommandBase
     /// Null speed variables ///
     public double forwardSpeedLeft, forwardSpeedRight;
     public boolean speedModToggle = true;
+
+    // Autonomous variable
+    public boolean autoMode = false;
     
     @Override
-    protected void execute() 
+    protected void execute()
     {
+
+        
         /// SETS SPEED VARIABLES EQUAL TO STICK VALUES ///
         forwardSpeedLeft = driver.getRawAxis(OI.leftStickY);
         forwardSpeedRight = driver.getRawAxis(OI.rightStickY);
@@ -65,6 +70,18 @@ public class DriveTrainCommand extends CommandBase
     /// Main driver code for motors ///
     public void motorDriveCode() 
     {
+        if (autoMode == true)
+        {
+            driveSubsystem.setMotors(forwardSpeedLeft, "left", speedModToggle);
+            driveSubsystem.setMotors(forwardSpeedRight, "right", speedModToggle);
+
+            if (RobotMap.driveDebug)
+            {
+                driveSubsystem.setMotors(0, "left", speedModToggle);
+                System.out.println("Autonomous code not working");
+            }
+        }
+
         /// CHECKS IF STICK IS BEYOND DEADZONE. SETS MOTOR IF SO, PRINTS ERROR IF NOT ///
         if (Math.abs(forwardSpeedLeft) > RobotMap.deadzone) 
         {
