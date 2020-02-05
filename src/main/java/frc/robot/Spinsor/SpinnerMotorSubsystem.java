@@ -1,7 +1,7 @@
 package frc.robot.Spinsor;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
@@ -11,7 +11,7 @@ public class SpinnerMotorSubsystem extends Subsystem
 
     // Motor Definitions
 
-    public VictorSPX spinnerMotor = new VictorSPX(RobotMap.spinnerMotor);
+    public TalonSRX spinnerMotor = new TalonSRX(RobotMap.spinnerMotor);
     
     // This function sets motor speeds, will set to static speed when bumper is pressed
     // There is a debug at the end
