@@ -14,7 +14,7 @@ public class SpinnerMotorSubsystem extends Subsystem
     public TalonSRX spinnerMotor = new TalonSRX(RobotMap.spinnerMotor);
     
     // This function sets motor speeds, will set to static speed when bumper is pressed
-    // There is a debug at the end
+    // There is a debug at the end  
 
     public void setMotors(final double speed, double spinnerSafetySpeedMod)
     {

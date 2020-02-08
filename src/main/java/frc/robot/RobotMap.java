@@ -23,9 +23,9 @@ public class RobotMap
     public ControlMode controlMode = ControlMode.PercentOutput;
     
     /// Motor Ports (CAN BUS) ///
-    public static int leftMotorMaster = 0; //Left Side
+    public static int leftMotorMaster = 1; //Left Side
     public static int leftMotorSlave = 3;
-    public static int rightMotorMaster = 1; //Right Side
+    public static int rightMotorMaster = 0; //Right Side
     public static int rightMotorSlave = 4; //Right Side
-    public static int spinnerMotor = 5; 
+    public static int spinnerMotor = 6; 
 }
