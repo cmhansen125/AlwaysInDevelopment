@@ -84,35 +84,63 @@ public class Robot extends TimedRobot
    */
   @Override
   public void autonomousPeriodic() 
+
+
+  /////need to change this to sete the motor, not just pulse powered
   {
     switch (m_autoSelected) {
       case kCustomAuto:
-        // Put custom auto code here
-        break;
+      DriveTrainCommand auto0 = new DriveTrainCommand();
+      auto0.autoMode = true;
+      auto0.forwardSpeedLeft = .5;
+      auto0.forwardSpeedRight = .5;
+      auto0.motorDriveCode();
+      // Hold motors at .5 power for 2 seconds then stop afterwards
+      auto0.forwardSpeedLeft = 0.0;
+      auto0.forwardSpeedRight = 0.0;
+      auto0.motorDriveCode();
+      auto0.autoMode = false;
+      System.out.println("auto mode enabled, kcuustom");
+      auto0.close();
+      break;
       case kDefaultAuto:
+      DriveTrainCommand auto = new DriveTrainCommand();
+      auto.autoMode = true;
+      auto.forwardSpeedLeft = .5;
+      auto.forwardSpeedRight = .5;
+      auto.motorDriveCode();
+      // Hold motors at .5 power for 2 seconds then stop afterwards
+      auto.forwardSpeedLeft = 0.0;
+      auto.forwardSpeedRight = 0.0;
+      auto.motorDriveCode();
+      auto.autoMode = false;
+      System.out.println("auto mode enabled, kdefault");
+      auto.close();
+        break;
       default:
         // Put default auto code here
         // Move the robot forward and stop after leaving line but before hitting middle area
         try
         {
-          DriveTrainCommand auto = new DriveTrainCommand();
-          auto.autoMode = true;
-          auto.forwardSpeedLeft = .5;
-          auto.forwardSpeedRight = .5;
-          auto.motorDriveCode();
+          DriveTrainCommand auto1 = new DriveTrainCommand();
+          auto1.autoMode = true;
+          auto1.forwardSpeedLeft = .5;
+          auto1.forwardSpeedRight = .5;
+          auto1.motorDriveCode();
           // Hold motors at .5 power for 2 seconds then stop afterwards
           Thread.sleep(2000);
-          auto.forwardSpeedLeft = 0.0;
-          auto.forwardSpeedRight = 0.0;
-          auto.motorDriveCode();
-          auto.autoMode = false;
-          auto.close();
+          auto1.forwardSpeedLeft = 0.0;
+          auto1.forwardSpeedRight = 0.0;
+          auto1.motorDriveCode();
+          auto1.autoMode = false;
+          System.out.println("auto mode enabled, default default");
+          auto1.close();
         } catch (InterruptedException e)
         {
           e.printStackTrace();
         }
-        break;
-    }
+      }  
+    
   }
 
   /**
