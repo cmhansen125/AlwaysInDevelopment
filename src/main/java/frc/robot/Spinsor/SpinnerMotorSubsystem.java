@@ -12,20 +12,19 @@ public class SpinnerMotorSubsystem extends Subsystem
 
     // Motor Definitions
     public CANSparkMax spinnerMotor = new CANSparkMax(RobotMap.spinnerMotorCan, MotorType.kBrushless);
-
     
     // This function sets motor speeds, will set to static speed when bumper is pressed
     // There is a debug at the end  
 
-    public void setMotors(final double speed, double spinnerSafetySpeedMod)
+    public void setMotors()
     { 
         System.out.println("INTO setmotors");
-        spinnerMotor.set(.5);
+        spinnerMotor.set(1);
            
        /// DEBUG CODE ///
        if (RobotMap.driveDebug)
        {
-           System.out.println("Spinner Speed : " + speed);
+           System.out.println("Spinner Speed : current speed not variable");
        }
     }
 

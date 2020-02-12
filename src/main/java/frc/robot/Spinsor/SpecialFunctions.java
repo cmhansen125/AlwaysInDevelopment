@@ -2,6 +2,7 @@ package frc.robot.Spinsor;
 
 import frc.robot.OI;
 import frc.robot.RobotMap;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.CommandBase;
@@ -33,12 +34,15 @@ public class SpecialFunctions extends CommandBase
     @Override
     protected void execute()
     {
+
+        spinnerRight = spinsor.getRawButton(OI.rightBumper);
         //gathers information on whether or not the X or B button has been pressed last
-        if (spinsor.getRawButton(OI.xButton)){
+        if (spinsor.getXButtonPressed())
+        {
             sensorOn = true;
             sensorOff = false;
         }
-        if (spinsor.getRawButton(OI.bButton))
+        if (spinsor.getBButtonPressed())
         {
             sensorOn = false;
             sensorOff = true;
@@ -54,7 +58,7 @@ public class SpecialFunctions extends CommandBase
         //if X button is pressed, transmit color data from sensor to laptop
         if (sensorOn)
         {
-            System.out.println("Starting transmission of Color Data.");
+            //System.out.println("Starting transmission of Color Data.");
             colorSensorSubsystem.printColor();
         }
         
@@ -74,11 +78,10 @@ public class SpecialFunctions extends CommandBase
     public void motorSpinnerCode()
     {
         //when right bumper is held down, motor is activated
-        if (spinsor.getRawButton(OI.rightBumper));
+        if (spinsor.getRawButton(OI.rightBumper))
         {
-            System.out.println("Pressing bubmper to activate spinner");
-            spinnerSubsystem.setMotors(1, RobotMap.spinnerSafetySpeedMod);
-        }
+            System.out.println("Pressing bumper to activate spinner");
+            spinnerSubsystem.setMotors();        }
 
     }
 
