@@ -9,7 +9,7 @@ public class RobotMap
     public static double driveSafetySpeedMod = 0.7;
 
     // Spinner Safety
-    public static double spinnerSafetySpeedMod = 1.0;
+    public static double spinnerSafetySpeedMod = .5;
 
 
     /// Debug Toggles ///
@@ -27,5 +27,5 @@ public class RobotMap
     public static int leftMotorSlave = 3;
     public static int rightMotorMaster = 0; //Right Side
     public static int rightMotorSlave = 4; //Right Side
-    public static int spinnerMotor = 5;
+    public static int spinnerMotorCan = 5;
 }

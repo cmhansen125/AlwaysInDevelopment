@@ -114,7 +114,7 @@ public class Robot extends TimedRobot
       auto.forwardSpeedRight = 0.0;
       auto.motorDriveCode();
       auto.autoMode = false;
-      System.out.println("auto mode enabled, kdefault");
+      //System.out.println("auto mode enabled, kdefault");
       auto.close();
         break;
       default:

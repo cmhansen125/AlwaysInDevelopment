@@ -20,7 +20,7 @@ public class ColorSensorSubsystem extends Subsystem
       Color currentColor = colorSensor.getColor();
 
       String colorString = currentColor.toString();
-      System.out.println("Current Color: " + colorString);
+      //System.out.println("Current Color: " + colorString);
 
     }
   

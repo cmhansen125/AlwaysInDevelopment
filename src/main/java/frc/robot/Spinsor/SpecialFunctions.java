@@ -15,7 +15,7 @@ public class SpecialFunctions extends CommandBase
 
         if (RobotMap.debug)
         {
-            System.out.println("Spinsor init");
+           // System.out.println("Spinsor init");
         }
     }
 
@@ -62,11 +62,11 @@ public class SpecialFunctions extends CommandBase
         //if B button is pressed, stop transmitting color data from sensor
         else if (sensorOff)
         {
-            System.out.println("Finished Transmitting, Press X to start again.");
+            //System.out.println("Finished Transmitting, Press X to start again.");
         }
         else
         {
-            System.out.println("Sensor Not Activated");
+           // System.out.println("Sensor Not Activated");
         }
         
     }
@@ -76,6 +76,7 @@ public class SpecialFunctions extends CommandBase
         //when right bumper is held down, motor is activated
         if (spinsor.getRawButton(OI.rightBumper));
         {
+            System.out.println("Pressing bubmper to activate spinner");
             spinnerSubsystem.setMotors(1, RobotMap.spinnerSafetySpeedMod);
         }
 

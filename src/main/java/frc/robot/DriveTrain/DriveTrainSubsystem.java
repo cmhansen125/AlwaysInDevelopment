@@ -54,7 +54,7 @@ public class DriveTrainSubsystem extends Subsystem
        /// DEBUG CODE ///
        if (RobotMap.driveDebug)
        {
-           System.out.println("Side : " + side + " \t\t Speed : " + speed);
+          // System.out.println("Side : " + side + " \t\t Speed : " + speed);
        }
     }
 
@@ -93,7 +93,7 @@ public class DriveTrainSubsystem extends Subsystem
             /// DEBUG CODE ///
             if (RobotMap.driveDebug)
             {
-                System.out.println("Error in configSpeed");
+              //  System.out.println("Error in configSpeed");
             }
             /// Return 0 ///
             return 0;
@@ -102,7 +102,7 @@ public class DriveTrainSubsystem extends Subsystem
         /// Final return statement ///
         if (RobotMap.driveDebug)
         {
-            System.out.println("Cubic Enabled : " + safetyCube + "\n Cap Enabled : " + speedMod + "\n Speed Input : " + speed + "\n Speed Output " + returnVar);
+          //  System.out.println("Cubic Enabled : " + safetyCube + "\n Cap Enabled : " + speedMod + "\n Speed Input : " + speed + "\n Speed Output " + returnVar);
         }
         return returnVar;
     }

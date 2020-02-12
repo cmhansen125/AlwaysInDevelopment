@@ -16,7 +16,7 @@ public class DriveTrainCommand extends CommandBase
         /// DEBUG CODE ///
         if (RobotMap.debug)
         {
-            System.out.println("Drive Train Command Init");
+           // System.out.println("Drive Train Command Init");
         }
     }
 
@@ -50,7 +50,7 @@ public class DriveTrainCommand extends CommandBase
         /// If both bumpers are pressed, don't let either safety disable /// 
         if ((driver.getRawButton(OI.leftTrigger)) && (driver.getRawButton(OI.leftBumper)))
             {
-                System.out.println("insert debug thing here");
+              //  System.out.println("insert debug thing here");
             }
         else
         {
@@ -94,7 +94,7 @@ public class DriveTrainCommand extends CommandBase
             if (RobotMap.driveDebug)
             {
                 driveSubsystem.setMotors(0, "left", speedModToggle);
-                System.out.println("Left Stick not above Deadzone");
+                //System.out.println("Left Stick not above Deadzone");
             }
         }
         /// CHECKS IF STICK IS BEYOND DEADZONE. SETS MOTOR IF SO, PRINTS ERROR IF NOT ///
@@ -108,13 +108,13 @@ public class DriveTrainCommand extends CommandBase
             if (RobotMap.driveDebug)
             {
                 driveSubsystem.setMotors(0, "right", speedModToggle);
-                System.out.println("Right Stick not above Deadzone");
+               // System.out.println("Right Stick not above Deadzone");
             }
         }
         /// DEBUG CODE ///
         if (RobotMap.debug)
         {
-            System.out.println("DriveTrainCommand Driver Code");
+          //  System.out.println("DriveTrainCommand Driver Code");
         }
         
     }
